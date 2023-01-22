@@ -1,0 +1,47 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:tailwindcss/recommended"
+  ],
+
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "tailwindcss"],
+
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "tailwindcss": {
+      "config": "tailwind.config.cjs"
+    }
+  },
+
+  "rules": {
+    "no-restricted-imports": ["error", "react-redux"],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/no-unescaped-entities": "off",
+    "tailwindcss/no-arbitrary-value": "warn",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "@next/next/no-img-element": "off"
+  },
+
+  "overrides": [
+    {
+      "files": "*.stories.tsx",
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
+      }
+    }
+  ]
+}
