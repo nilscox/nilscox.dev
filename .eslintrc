@@ -3,6 +3,8 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
@@ -15,9 +17,15 @@
     "project": ["./tsconfig.json"]
   },
 
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "tailwindcss"],
+  "plugins": ["@typescript-eslint", "import", "react", "react-hooks", "jsx-a11y", "tailwindcss"],
 
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": true
+    },
     "react": {
       "version": "detect"
     },
@@ -31,9 +39,16 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/no-unescaped-entities": "off",
-    "tailwindcss/no-arbitrary-value": "warn",
-    "jsx-a11y/click-events-have-key-events": "off",
-    "@next/next/no-img-element": "off"
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc" },
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
+      }
+    ]
   },
 
   "overrides": [

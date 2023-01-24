@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --page-width: 1100px;
+:root {
+  --page-width: 978px;
 }
 
-html {
+:root {
   --color-neutral: 255 255 255;
   --color-muted: 255 255 255;
   --color-inverted: 0 0 0;
@@ -15,9 +15,10 @@ html {
   --color-text-neutral: 32 32 32;
   --color-text-muted: 128 128 128;
   --color-text-link: 39 46 226;
+  --color-border: 235 235 235;
 }
 
-html.dark {
+:root.dark {
   --color-neutral: 21 21 21;
   --color-muted: 32 32 32;
   --color-inverted: 255 255 255;
@@ -25,21 +26,18 @@ html.dark {
   --color-yellow: 255 203 0;
   --color-text-neutral: 223 223 223;
   --color-text-muted: 128 128 128;
-  --color-text-link: 92 142 255;
-}
-
-html {
-  @apply text-base;
-}
-
-@media screen and (max-width: 768px) {
-  html {
-    @apply text-base-mobile;
-  }
+  --color-text-link: 120 120 255;
+  --color-border: 41 41 41;
 }
 
 body {
-  @apply font-body;
+  @apply text-base font-body;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    @apply text-base-mobile;
+  }
 }
 
 strong {
@@ -54,7 +52,7 @@ p {
   @apply my-2;
 }
 
-nav > a {
+header a {
   color: inherit;
 }
 

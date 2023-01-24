@@ -14,7 +14,15 @@ const Tool = ({ label, icon }: ToolProps) => (
 );
 
 Tool.factory = (label: string, Icon: icons.IconType) => (props: Omit<ToolProps, 'icon' | 'label'>) => {
-  return <Tool label={label} icon={<Icon color="default" size={props.size === 'big' ? 56 : undefined} />} {...props} />;
+  return (
+    <Tool
+      label={label}
+      icon={
+        <Icon color="default" size={props.size === 'big' ? 56 : undefined} className="dark:fill-yellow" />
+      }
+      {...props}
+    />
+  );
 };
 
 export const TypeScript = Tool.factory('TypeScript', icons.Typescript);

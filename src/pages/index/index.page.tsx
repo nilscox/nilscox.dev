@@ -1,6 +1,7 @@
-import photo from './photo.jpg';
 import * as tools from '../../components/tools';
 import { ToolsSlider } from '../../components/tools-slider';
+
+import photo from './photo.jpg';
 
 export const Page = () => (
   <>
@@ -22,7 +23,8 @@ const Header = () => (
     <h1 className="col md:row row h-[24rem] items-center justify-center px-4 md:gap-4">
       <img src={photo} className="w-[9rem] rounded-lg" alt="my face" />
       <p className="max-w-[24rem] text-xl">
-        Hi! I'm <span className="font-semibold text-[#8a2626]">nilscox</span>, yet another web developer.
+        Hi! I'm <span className="font-semibold text-[#8a2626] dark:text-[#FFFFFF]">nilscox</span>, yet another
+        web developer.
       </p>
     </h1>
   </header>
@@ -46,8 +48,8 @@ const Intro = () => (
   <div className="my-4 text-lg md:my-8">
     <p>My real name is Nils, I'm a passionate developer for more than 10 years.</p>
     <p>
-      I make <strong>web applications</strong>, both for fun and for a living, and I deeply care about making things
-      right. I currently work as a frontend engineer at <a href="https://koyeb.com">koyeb</a>.
+      I make <strong>web applications</strong>, both for fun and for a living, and I deeply care about making
+      things right. I currently work as a frontend engineer at <a href="https://koyeb.com">koyeb</a>.
     </p>
   </div>
 );
@@ -85,17 +87,18 @@ const AboutMe = () => (
     <p>So you want to know a bit more about me? Sure! What can I tell you...?</p>
 
     <p>
-      I come from Le Havre (France), I went to <a href="https://epita.fr">EPITA</a> an engineering school in Paris, and
-      I worked as a full-stack web developer for several startups. Throughout my different experiences, I acquired the
-      skills I use today to build apps, from understanding the needs to deploying and maintaining a technical solution.
+      I come from Le Havre (France), I went to <a href="https://epita.fr">EPITA</a> an engineering school in
+      Paris, and I worked as a full-stack web developer for several startups. Throughout my different
+      experiences, I acquired the skills I use today to build apps, from understanding the needs to deploying
+      and maintaining a technical solution.
     </p>
 
     <p>
-      What do I mean by "making things right", you ask? Well, a lot actually... In short, I always do my best to build
-      resilient, unit-tested systems, and I spend a lot of time learning about what I believe are{' '}
+      What do I mean by "making things right", you ask? Well, a lot actually... In short, I always do my best
+      to build resilient, unit-tested systems, and I spend a lot of time learning about what I believe are{' '}
       <strong>good practices</strong> (clean code, clean architecture, microservices, test-driven development,
-      domain-driven design, SOLID principles, etc.) in order to keep <strong>high quality standards</strong> while being
-      pragmatic in my decision making process.
+      domain-driven design, SOLID principles, etc.) in order to keep <strong>high quality standards</strong>{' '}
+      while being pragmatic in my decision making process.
     </p>
 
     <p>
@@ -103,8 +106,8 @@ const AboutMe = () => (
       <a href="https://soundcloud.com/brainwave-1" className="text-inherit hover:underline">
         make music
       </a>
-      , beer, I do a bit of slackline and stuff that regular people do, like playing video games and watching tv shows.
-      But I spend most of my free time coding on my side projects.
+      , beer, I do a bit of slackline and stuff that regular people do, like playing video games and watching
+      tv shows. But I spend most of my free time coding on my side projects.
     </p>
   </Section>
 );
@@ -114,8 +117,8 @@ const Hiring = () => (
     <p>You want to work with me?! Whoop-de-doo! Amazing!</p>
 
     <p>
-      To be honest, I'm not looking for a new opportunity at the moment, but I may know a few people who are! Let's{' '}
-      <a href="/contact">get it touch</a> and we can discuss it. <span title="handshake">🤝</span>
+      To be honest, I'm not looking for a new opportunity at the moment, but I may know a few people who are!
+      Let's <a href="/contact">get it touch</a> and we can discuss it. <span title="handshake">🤝</span>
     </p>
   </Section>
 );

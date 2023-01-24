@@ -5,13 +5,18 @@ module.exports = {
   content: ['src/**/*.tsx'],
   darkMode: 'class',
   theme: {
-    maxWidth: {
-      page: 'var(--page-width)',
+    spacing: {
+      0: '0',
+      1: '0.25rem',
+      2: '0.5rem',
+      3: '0.75rem',
+      4: '1rem',
+      5: '1.5rem',
+      6: '2rem',
+      7: '3rem',
+      8: '4rem',
     },
-    height: {
-      full: '100%',
-      header: 384,
-    },
+
     colors: {
       transparent: 'transparent',
       neutral: 'rgb(var(--color-neutral) / <alpha-value>)',
@@ -26,6 +31,11 @@ module.exports = {
       muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
       link: 'rgb(var(--color-text-link) / <alpha-value>)',
     },
+    borderColor: {
+      DEFAULT: 'rgb(var(--color-border) / <alpha-value>)',
+      inverted: 'rgb(var(--color-inverted) / <alpha-value>)',
+    },
+
     fontSize: {
       base: '16px',
       'base-mobile': '14px',
@@ -36,19 +46,17 @@ module.exports = {
     fontFamily: {
       body: ['"Source Sans 3Variable"', 'sans-serif'],
     },
+
     borderRadius: {
+      DEFAULT: '1rem',
       lg: '2rem',
     },
-    spacing: {
-      0: '0',
-      1: '0.25rem',
-      2: '0.5rem',
-      3: '0.75rem',
-      4: '1rem',
-      5: '1.5rem',
-      6: '2rem',
-      7: '3rem',
-      8: '4rem',
+    maxWidth: {
+      page: 'var(--page-width)',
+    },
+    height: {
+      full: '100%',
+      header: 384,
     },
   },
 };

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "strict": true,
     "module": "ES2020",
     "target": "ES2020",
@@ -7,7 +8,15 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["vite/client"],
     "jsx": "react-jsx",
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "esm": true,
+    "compilerOptions": {
+      "moduleResolution": "Node16"
+    }
   }
 }

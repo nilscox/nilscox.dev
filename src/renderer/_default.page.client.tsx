@@ -1,8 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import type { PageContextClient } from './types';
 
+import { getPreferredTheme, StoreTheme, Theme } from '../hooks/use-theme-mode';
 import { Layout } from '../layout';
+
 import { PageContextProvider } from './page-context';
+import type { PageContextClient } from './types';
 
 export const clientRouting = true;
 export const hydrationCanBeAborted = true;
@@ -13,8 +15,15 @@ export function render(pageContext: PageContextClient) {
   const { Page, pageProps } = pageContext;
 
   const container = document.getElementById('app') as HTMLElement;
+
+  const preferredTheme = getPreferredTheme();
+  if (!pageContext.theme && preferredTheme === Theme.dark) {
+    document.body.parentElement?.classList.add('dark');
+  }
+
   const page = (
     <PageContextProvider context={pageContext}>
+      <StoreTheme />
       <Layout>
         <Page {...pageProps} />
       </Layout>

@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
+
+import { Theme } from '../hooks/use-theme-mode';
+
 import { PageContextClient } from './types';
 
-type PageContext = Pick<PageContextClient, 'urlPathname'>;
+type PageContext = Pick<PageContextClient, 'urlPathname' | 'header'> & {
+  theme?: Theme;
+};
 
 const pageContext = React.createContext<PageContext>({});
 
@@ -20,4 +25,12 @@ const usePageContext = () => {
 
 export const usePathname = () => {
   return usePageContext().urlPathname;
+};
+
+export const useInitialTheme = () => {
+  return usePageContext().theme;
+};
+
+export const useHeader = () => {
+  return usePageContext().header;
 };

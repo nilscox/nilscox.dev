@@ -1,0 +1,11 @@
+:root {
+  --notion-max-width: var(--page-width);
+}
+
+.notion-page-cover-wrapper {
+  display: none;
+}
+
+.notion-collection-page-properties {
+  display: none;
+}
