@@ -31,6 +31,8 @@ async function startServer() {
     app.use(viteDevServer.middlewares);
   }
 
+  app.use('/cv', express.static(path.join(root, 'cv', 'dist')));
+
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   app.get('*', async (req, res, next) => {
     const { httpResponse } = await renderPage({

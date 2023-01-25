@@ -54,10 +54,21 @@ const Navigation = () => (
     <NavLink href="/" strict>
       Home
     </NavLink>
-    <NavLink href="/cv">CV</NavLink>
+
+    <NavLink href="/cv" rel="external">
+      CV
+    </NavLink>
+
     <NavLink href="/blog">Blog</NavLink>
-    <NavLink href="https://www.github.com/nilscox">GitHub</NavLink>
-    <NavLink href="https://www.linkedin.com/in/nilscox">LinkedIn</NavLink>
+
+    <NavLink href="https://www.github.com/nilscox" rel="external">
+      GitHub
+    </NavLink>
+
+    <NavLink href="https://www.linkedin.com/in/nilscox" rel="external">
+      LinkedIn
+    </NavLink>
+
     <ToggleDarkMode />
   </nav>
 );
