@@ -20,13 +20,13 @@ koyeb app init nilscox-dev \
   --git github.com/nilscox/nilscox.dev \
   --git-branch master \
   --git-build-command './build.sh' \
+  --git-run-command 'NODE_OPTIONS="--experimental-specifier-resolution=node" yarn start' \
   --ports 8080:http \
   --routes /:8080 \
   --instance-type micro \
   --env HOST="0.0.0.0" \
   --env PORT="8080" \
   --env NODE_ENV="production" \
-  --env NODE_OPTIONS="--experimental-specifier-resolution=node" \
   --env DATA="$DATA" \
   --env ANALYTICS_URL="$ANALYTICS_URL" \
   --env ANALYTICS_SITE_ID="$ANALYTICS_SITE_ID" \

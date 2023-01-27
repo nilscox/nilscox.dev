@@ -77,6 +77,7 @@ const ToggleDarkMode = () => (
   <button
     type="button"
     className="row items-start p-0 pt-1"
+    title="Toggle dark mode"
     onClick={() => {
       document.body.parentElement?.classList.toggle('dark');
     }}

@@ -13,8 +13,12 @@ const config: UserConfig = {
   server: {
     port: 8000,
   },
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  plugins: [react(), svgr(), ssr(), visualizer()],
+  plugins: [react(), svgr(), ssr()],
+  build: {
+    rollupOptions: {
+      plugins: [visualizer()],
+    },
+  },
 };
 
 export default config;

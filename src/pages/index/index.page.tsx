@@ -21,7 +21,7 @@ export const Page = () => (
 const Header = () => (
   <header className="bg-yellow dark:bg-muted md:-mt-6">
     <h1 className="col md:row row h-[24rem] items-center justify-center px-4 md:gap-4">
-      <img src={photo} className="w-[9rem] rounded-lg" alt="my face" />
+      <img src={photo} width={144} height={144} className="rounded-lg" alt="my face" />
       <p className="max-w-[24rem] text-xl">
         Hi! I'm <span className="font-semibold text-[#8a2626] dark:text-[#FFFFFF]">nilscox</span>, yet another
         web developer.
