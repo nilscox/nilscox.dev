@@ -1,5 +1,6 @@
+import Moon from '@heroicons/react/24/solid/MoonIcon';
+import Sun from '@heroicons/react/24/solid/SunIcon';
 import clsx from 'clsx';
-import { HiMoon } from 'react-icons/hi';
 
 import { useHeader, usePathname } from './renderer/page-context';
 
@@ -83,7 +84,8 @@ const ToggleDarkMode = () => (
       document.body.parentElement?.classList.toggle('dark');
     }}
   >
-    <HiMoon />
+    <Moon className="w-4 dark:hidden" />
+    <Sun className="hidden w-4 dark:block" />
   </button>
 );
 

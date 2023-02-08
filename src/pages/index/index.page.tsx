@@ -70,10 +70,11 @@ const Stack = () => (
       <tools.Tailwind size="big" />
       <tools.NodeJS size="big" />
       <tools.Vite size="big" />
-      <tools.React size="big" />
+      <tools.ReactJS size="big" />
       <tools.Pnpm size="big" />
       <tools.Redux size="big" />
       <tools.Webpack size="big" />
+      <tools.NestJS size="big" />
       <tools.Kubernetes size="big" />
       <tools.ReactQuery size="big" />
       <tools.SQLite size="big" />
