@@ -14,6 +14,7 @@ export const Layout = ({ children }: LayoutProps) => (
   <>
     <Header />
     {children}
+    <Footer />
   </>
 );
 
@@ -85,3 +86,7 @@ const ToggleDarkMode = () => (
     <HiMoon />
   </button>
 );
+
+const Footer = () => {
+  return <footer className="mx-auto my-8 max-w-page text-center">FOOTER</footer>;
+};

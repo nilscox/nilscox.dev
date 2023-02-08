@@ -3,7 +3,11 @@ import { fileURLToPath } from 'node:url';
 
 import compression from 'compression';
 import express from 'express';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { renderPage } from 'vite-plugin-ssr';
+
+import { Background } from './pages/index/background';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -32,6 +36,15 @@ async function startServer() {
   }
 
   app.use('/cv', express.static(path.join(root, 'cv', 'dist')));
+
+  app.use('/background.svg', (req, res) => {
+    const svg = ReactDOMServer.renderToStaticMarkup(
+      React.createElement(Background, { width: 64, height: 12 })
+    );
+
+    res.header('Content-Type', 'image/svg+xml');
+    res.send(svg);
+  });
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   app.get('*', async (req, res, next) => {

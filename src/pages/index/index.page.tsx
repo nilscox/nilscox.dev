@@ -19,15 +19,18 @@ export const Page = () => (
 /* eslint-disable tailwindcss/no-arbitrary-value */
 
 const Header = () => (
-  <header className="bg-yellow dark:bg-muted md:-mt-6">
+  <div
+    className="bg-yellow bg-cover bg-bottom dark:bg-muted"
+    style={{ backgroundImage: "url('/background.svg')" }}
+  >
     <h1 className="col md:row row h-[24rem] items-center justify-center px-4 md:gap-4">
       <img src={photo} width={144} height={144} className="rounded-lg" alt="my face" />
-      <p className="max-w-[24rem] text-xl">
-        Hi! I'm <span className="font-semibold text-[#8a2626] dark:text-[#FFFFFF]">nilscox</span>, yet another
-        web developer.
+      <p className="max-w-[20rem] text-xl">
+        Hi! I'm <span className="font-semibold text-[#8a2626] dark:text-[#FFFFFF]">nilscox</span>, a full
+        stack <strong>TypeScript developer</strong>.
       </p>
     </h1>
-  </header>
+  </div>
 );
 
 /* eslint-enable tailwindcss/no-arbitrary-value */
@@ -94,11 +97,11 @@ const AboutMe = () => (
     </p>
 
     <p>
-      What do I mean by "making things right", you ask? Well, a lot actually... In short, I always do my best
-      to build resilient, unit-tested systems, and I spend a lot of time learning about what I believe are{' '}
-      <strong>good practices</strong> (clean code, clean architecture, microservices, test-driven development,
-      domain-driven design, SOLID principles, etc.) in order to keep <strong>high quality standards</strong>{' '}
-      while being pragmatic in my decision making process.
+      I always do my best to build resilient, unit-tested systems, and I spend a lot of time learning about
+      what I believe are <strong>good practices</strong>. Things like clean code, clean architecture,
+      microservices architecture, test-driven development, domain-driven design, SOLID principles, code
+      reviews, are, in my opinion, necessary to achieve <strong>high quality standards</strong> and keep
+      productivity to an optimal level on the long term.
     </p>
 
     <p>

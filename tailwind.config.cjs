@@ -40,14 +40,17 @@ module.exports = {
       base: '16px',
       'base-mobile': '14px',
       sm: '0.875rem',
-      lg: '1.4rem',
-      xl: '2rem',
+      lg: '1.25rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
     },
     fontFamily: {
       body: ['"Source Sans 3Variable"', 'sans-serif'],
     },
 
     borderRadius: {
+      xs: '0.25rem',
+      sm: '0.5rem',
       DEFAULT: '1rem',
       lg: '2rem',
     },
