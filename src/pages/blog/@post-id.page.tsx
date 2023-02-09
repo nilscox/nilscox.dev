@@ -2,15 +2,16 @@ import { EvaluateOptions, evaluateSync } from '@mdx-js/mdx';
 import React, { ComponentType, useEffect, useMemo, useState } from 'react';
 import * as jsxRuntime from 'react/jsx-runtime';
 
+import { Post } from './post';
+
 import './post.css';
 
 type BlogPageProps = {
-  postId: string;
-  post: string;
+  post: Post;
 };
 
 export const Page = ({ post }: BlogPageProps) => {
-  const Post = useMemo(() => evaluate(post), [post]);
+  const Post = useMemo(() => evaluate(post.content), [post]);
 
   const [HtmlPreview, setHtmlPreview] = useState<ComponentType<any>>(() => LoadingHtml);
   const [ReactPreview, setReactPreview] = useState<ComponentType<any>>(() => LoadingCode);

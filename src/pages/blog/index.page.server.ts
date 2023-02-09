@@ -1,6 +1,9 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { isAfter } from 'date-fns';
 
-import { Post } from './index.page';
+import { Post } from './post';
+import { FileSystemPostRepository } from './file-system-post.repository';
 
 export const onBeforeRender = async () => ({
   pageContext: {
@@ -13,16 +16,8 @@ export const onBeforeRender = async () => ({
 
 const listPosts = async (): Promise<Post[]> => {
   const now = new Date();
+  const repository = new FileSystemPostRepository();
+  const posts = await repository.listPosts();
 
-  return ['/blog/test']
-    .map((link): Post => {
-      return {
-        link,
-        title: 'Home page background',
-        date: new Date('2023-02-09'),
-        cover: '/post.svg',
-        description: 'Generate a SVG to be used as an animated background image',
-      };
-    })
-    .filter((post) => isAfter(now, post.date));
+  return posts.filter((post) => isAfter(now, post.date));
 };

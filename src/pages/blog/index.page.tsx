@@ -1,12 +1,6 @@
 import { format } from 'date-fns';
 
-export type Post = {
-  link: string;
-  title: string;
-  date: Date;
-  cover?: string;
-  description?: string;
-};
+import { Post } from './post';
 
 type BlogPageProps = {
   posts: Post[];
