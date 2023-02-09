@@ -1,0 +1,98 @@
+---
+title: Fast cursor movements while coding
+description: Optimizing cursor movements while writing code is the first step to being more productive, let's see a few tricks toward that direction
+cover: https://images.unsplash.com/photo-1506719040632-7d586470c936?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=255
+date: 2022-12-17
+timeToRead: 2
+---
+
+# Fast cursor movements while coding
+
+One of the most common thing we do while we write code, is moving the cursor(s). So if we want to code faster, the first thing we should think about is how to move the cursor quickly, isn't it?
+
+There are a few things that we commonly do when moving the cursor, and by assigning those to convinient shortcuts, I can assure you that you'll boost your productivity (don't worry, I'll give my own shortcuts 👌).
+
+## By words and sub-words
+
+<SideBySide
+  left={<p>Well, that's obvious, and I'm sure you already know this. Moving your cursor horizontally can be done by character, by word and by sub-word. Moving by sub-word means between the words containing underscores or written in camlCase.</p>}
+  right={<img alt="Cursor movements by words and sub-words" src="/posts/2022-12-17-fast-cursor-movements-while-coding/move-cursor-by-word.gif" />}
+/>
+
+## Vertical movements
+
+<SideBySide
+  left={
+    <>
+      <p>If say that a vertical space is an empty line, then we can start moving by empty lines, which can save a few keystrokes. But of course, you need to have empty lines in your code (and you should, it makes things easier to read).</p>
+      <p>Also, you may want to move page by page, or to the start and end of the file. And while we're at it, we can also scroll using a shortcut.</p>
+    </>
+  }
+  right={<img alt="Cursor movement by empty lines" src="/posts/2022-12-17-fast-cursor-movements-while-coding/move-cursor-by-empty-line.gif" />}
+/>
+
+## Start and end of the line
+
+<SideBySide
+  left={
+    <>
+      <p>This is something I literally do all the time.</p>
+      <p>Note that there are kind of two ways to see the "start of the line". It can either be the very first character or the first non-whitespace character. I use the same shortcut for both, which toggles between the two.</p>
+    </>
+  }
+  right={<img alt="Cursor movements to start and end of the line" src="/posts/2022-12-17-fast-cursor-movements-while-coding/move-cursor-to-line-start-end.gif" />}
+/>
+
+## Selecting code quickly
+
+<SideBySide
+  left={
+    <>
+      <p>As an added bonus, all the movements we talked about can be done while creating a selection, allowing to quickly select some code.</p>
+      <p>Ideally, you'll want to use the same shortcuts that you use to move the cursor but by adding <code>shift</code>, you'll do it with a selection. Easy to remember 🙂.</p>
+    </>
+  }
+  right={<img alt="Cursor movement while creating a selection" src="/posts/2022-12-17-fast-cursor-movements-while-coding/move-cursor-with-selection.gif" />}
+/>
+
+## My shortcuts (vscode)
+
+Here are the shortcuts I configured to do all that, feel free to use them as you like. But remember, it's important not to go too fast! One step at a time, otherwise you'll just forget the ton of things you configured.
+
+```json
+// prettier-ignore
+[
+  // cursor movement
+  // ---------------
+
+  // subword
+  { "key": "alt+left", "command": "cursorWordPartLeft" },
+  { "key": "alt+right", "command": "cursorWordPartRight" },
+
+  // subword with selection
+  { "key": "shift+alt+left", "command": "cursorWordPartLeftSelect" },
+  { "key": "shift+alt+right", "command": "cursorWordPartRightSelect" },
+
+  // line start / end
+  { "key": "ctrl+alt+left", "command": "cursorHome" },
+  { "key": "ctrl+alt+right", "command": "cursorEnd" },
+
+  // line start / end with selection
+  { "key": "ctrl+shift+alt+left", "command": "cursorHomeSelect" },
+  { "key": "ctrl+shift+alt+right", "command": "cursorEndSelect" },
+
+  // previous / next empty line
+  { "key": "alt+up", "command": "cursorMove", "args": { "to": "prevBlankLine", "by": "wrappedLine" } },
+  { "key": "alt+down", "command": "cursorMove", "args": { "to": "nextBlankLine", "by": "wrappedLine" } },
+  { "key": "alt+shift+up", "command": "cursorMove", "args": { "to": "prevBlankLine", "select": true } },
+  { "key": "alt+shift+down", "command": "cursorMove", "args": { "to": "nextBlankLine", "select": true } },
+
+  // file start / end
+  { "key": "home", "command": "cursorTop" },
+  { "key": "end", "command": "cursorBottom" },
+
+  // file start / end with selection
+  { "key": "shift+home", "command": "cursorTopSelect" },
+  { "key": "shift+end", "command": "cursorBottomSelect" }
+]
+```

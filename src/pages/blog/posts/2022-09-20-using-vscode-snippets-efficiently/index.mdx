@@ -1,0 +1,174 @@
+---
+title: Using vscode snippets efficiently
+description: Boost your productivity with vscode's snippets feature, and go even further by inserting them smartly
+date: 2022-09-20
+cover: https://images.unsplash.com/photo-1604488912264-dfed70450d76?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=255
+timeToRead: 3
+---
+
+# Using vscode snippets efficiently
+
+When we write code, there are things that we do quite often. How many times did you write an HTML document's basic structure? Or a React component? Or even just a `console.log`?
+
+You can re-type these things again and again every time you need to, but you can also leverage vscode's snippet feature, allowing to quickly drop some code template anywhere.
+
+## Creating a snippet with vscode
+
+Sorry for those who aren't using vscode, but I'm sure you can find something equivalent with your favorite editor too.
+
+To create a new snippet, you'll just need to create a file within vscode's config directory, usually it will be in `~/.config/Code/User/snippets`. The snippet are JSON files, but their extension should be `.code-snippet`.
+
+You can also create a snippet from the command palette, by searching for "Configure User Snippets", then "New Global Snippets file…".
+
+Here is the format for a snippet definition (and [here is the documentation](https://code.visualstudio.com/docs/editor/userdefinedsnippets)):
+
+```json filename="~/.config/Code/User/snippets/my-snippet.code-snippets" caption="vscode snippet definition"
+{
+  "Snippet name": {
+    "description": "Description",
+    "body": [
+      "line1",
+      "line2",
+    ]
+  }
+}
+```
+
+You can also add a `prefix` key, which will allow inserting the snippet by typing this prefix and accept the snippet suggestion from the autocomplete menu. But this is not how I like to insert a snippet, I'll come back to this later.
+
+Often, you'll want your snippet to only exist within a given context, while writing code in some specific language. You'll never want to write a `console.log` in some python source code, would you? To achieve this, you can add a `scope` key, and it's value should be a [language identifier](https://code.visualstudio.com/docs/languages/identifiers).
+
+## Inserting a snippet
+
+Okay, so the common (and default) way of inserting snippets is to write something, then press tab. But I personally find it annoying, because of two reasons:
+
+- I may insert snippets by error if I mistype something
+- It requires writing a prefix, and then press enter, which is too many keystrokes in my opinion
+
+Instead, I find it extremely convenient to use [chords shortcuts](https://code.visualstudio.com/docs/getstarted/keybindings#_keyboard-rules), like `alt+x t`. We first press `alt+x`, release everything, and then just press `t`. I do you `alt+x <letter>` for all my snippets (and I use `x` because it's right above the `alt` key).
+
+If you want to try this, you will also want to exclude the snippet suggestion from vscode's autocompletion system, by adding this to your configuration:
+
+```json filename="~/.config/Code/User/settings.json" caption="Disable vscode snippets suggestions"
+"editor.snippetSuggestions": "none"
+```
+
+So why do I prefer to use chords, you ask? Well, for many reasons. First, I only use 3 keystrokes to insert any snippet. Second, I can set some places where the cursor should be moved to after inserting the snippet, allowing to customize the inserted template. And also, I can quickly insert a snippet while having a selection, which can be pretty neat, thanks to variables interpolations.
+
+## Variables interpolations
+
+A snippet is actually more powerful than just a bunch of code, as it can contain variables, like the current file's name, the current date, the cursor's index, or a randomly generated UUID. All available variables are documented [right here](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables).
+
+## Some of my favorite snippets
+
+Here are some of the snippets I use the most, feel free to grab them for yourself! And if you find ways to improve them, please pleeeease let me know! 😀
+
+And if you want more, check out the whole list of snippets on [my dotfiles](https://github.com/nilscox/.dotfiles/tree/master/vscode/snippets).
+
+### Log something to the console
+
+`console.log`'s cousin that you'll love to use if you don't already.
+
+```json filename="console-dir.code-snippet"
+{
+  "console dir": {
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": ["console.dir(${1:$TM_SELECTED_TEXT}, { depth: null });"]
+  }
+}
+```
+
+### Wait for a timeout
+
+Await a promise created on the fly after some time (useful to debug race conditions).
+
+```json filename="wait.code-snippet"
+{
+  "wait": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "body": [
+      "await new Promise(r => setTimeout(r, $1));"
+    ]
+  }
+}
+```
+
+### Wrap a selection in a html / React tag
+
+I use this one all the time when I code in React, and it's so simple!
+
+```json filename="wrap.code-snippet"
+{
+	"wrap": {
+		"description": "Wrap a selection between a JSX tag",
+		"scope": "html,javascriptreact,typescriptreact",
+		"body": [
+			"<${0}>$TM_SELECTED_TEXT</$0>"
+		]
+	}
+}
+```
+
+### Declare a React component
+
+You'll need to either adapt the transformations, or use uppercase letters in the files names, though.
+
+```json filename="react-component.code-snippet"
+{
+  "react component": {
+    "scope": "typescriptreact",
+    "body": [
+      "type ${1:${TM_FILEPATH/.*\\/(.*)\\/index\\.[jt]sx?$|.*\\/(.*)\\.[jt]sx?$/$1$2/}}Props = {",
+      "  $2",
+      "};",
+      "",
+      "const ${1} = ({ $3 }: ${1}Props) => {",
+      "  return (",
+      "    <$4>",
+      "      $0",
+      "    </$4>",
+      "  );",
+      "};"
+    ]
+  }
+}
+```
+
+### ESModule import
+
+Just add a simple import.
+
+```json filename="esm-import.code-snippet"
+{
+  "import": {
+    "scope": "javascript,javascriptreact,typescript,typescriptreact",
+    "body": [
+      "import $1 from '${2:$1}';"
+    ]
+  }
+}
+```
+
+### Scaffold a HTML document's structure
+
+And last but not least...
+
+```json filename="html-document.code-snippet"
+{
+	"html": {
+		"scope": "html",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html>",
+			"	<head>",
+			"		<meta charset=\"utf8\">",
+			"		<title>$2</title>",
+			"	</head>",
+			"	<body>",
+			"		$1",
+			"	</body>",
+			"</html>"
+		]
+	}
+}
+```

@@ -37,8 +37,9 @@ module.exports = {
     },
 
     fontSize: {
-      base: '16px',
-      'base-mobile': '14px',
+      base: '18px',
+      'base-mobile': '16px',
+      xs: '0.75rem',
       sm: '0.875rem',
       lg: '1.25rem',
       xl: '1.5rem',
@@ -46,6 +47,7 @@ module.exports = {
     },
     fontFamily: {
       body: ['"Source Sans 3Variable"', 'sans-serif'],
+      mono: ['monospace'],
     },
 
     borderRadius: {

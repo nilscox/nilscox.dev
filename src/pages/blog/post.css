@@ -16,11 +16,19 @@
     font-size: 0.85em;
   }
 
+  pre {
+    @apply my-6;
+  }
+
   pre code {
-    @apply py-2 bg-transparent;
+    @apply rounded-sm whitespace-pre bg-muted/50;
   }
 
   blockquote {
     @apply text-sm text-muted border-l-4 pl-2;
+  }
+
+  ul {
+    @apply list-disc list-inside pl-4
   }
 }
