@@ -1,0 +1,373 @@
+---
+title: Home page background
+description: Generate a SVG to be used as an animated background image
+timeToRead: 5
+---
+
+# Home page background
+
+I wanted to learn about animated SVGs for a while, and now that I'm working on this website, I thought that adding some texture to the yellow header on the [home page](https://nilscox.dev) could be nice. And it was pretty fun to do! Here is how it works.
+
+You need some basic knowledge about SVG to follow this post, but I'll try to link to the relevant docs, so you can refer to it if needed 🙂.
+
+## A diamond
+
+We'll go step by step, starting with a very simple shape: a diamond.
+
+To do this, we'll use a [path](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path) shape, with some very simple commands: [move to](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#moveto_path_commands) (M), [line to](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#lineto_path_commands) (L), and [close path](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#closepath) (Z).
+
+<HtmlPreview
+  height={160}
+  html={`
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 4 2"
+  width="100%"
+  height="100"
+>
+  <path fill="#0006" d="M 0 1 L 2 0 L 4 1 L 2 2 Z" />
+</svg>
+`}
+/>
+
+## A cube
+
+The 3D cube shape that will be used to draw a pattern is simply made of 3 diamonds side by side, with a different angle for each. But instead of rotating the same diamond shape, it's easier to create 3 different shapes.
+
+<HtmlPreview
+  height={220}
+  html={`
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 4 4"
+  width="100%"
+  height="200"
+>
+  <path fill="#0006" d="M 0 1 L 2 0 L 4 1 L 2 2 Z" />
+  <path fill="#0003" d="M 0 1 L 2 2 L 2 4 L 0 3 Z" />
+  <path fill="#0009" d="M 4 1 L 2 2 L 2 4 L 4 3 Z" />
+</svg>
+`}
+/>
+
+## Cubes pattern
+
+Now that we can draw a single cube, we'll just need to make a bunch of them at different locations to create a pattern.
+
+To achieve this, we'll use SVG's [use element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use), allowing to create different instances of the same node (I learned about this while creating this image by the way!)
+
+<HtmlPreview
+  height={400}
+  html={`
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 -1 16 12"
+  width="100%"
+  height="400"
+>
+  <defs>
+    <path id="face1" d="M 0 0 L 2 -1 L 4 0 L 2 1 Z" />
+    <path id="face2" d="M 0 0 L 2 1 L 2 3 L 0 2 Z" />
+    <path id="face3" d="M 4 0 L 2 1 L 2 3 L 4 2 Z" />
+
+    <g id="cube">
+      <use href="#face1" fill="#0006" />
+      <use href="#face2" fill="#0003" />
+      <use href="#face3" fill="#0009" />
+    </g>
+
+  </defs>
+
+  <use href="#cube" x="0" y="0" />
+  <use href="#cube" x="4" y="0" />
+  <use href="#cube" x="8" y="0" />
+  <use href="#cube" x="12" y="0" />
+
+  <use href="#cube" x="2" y="3" />
+  <use href="#cube" x="6" y="3" />
+  <use href="#cube" x="10" y="3" />
+  <use href="#cube" x="14" y="3" />
+
+  <use href="#cube" x="0" y="6" />
+  <use href="#cube" x="4" y="6" />
+  <use href="#cube" x="8" y="6" />
+  <use href="#cube" x="12" y="6" />
+
+  <use href="#cube" x="2" y="9" />
+  <use href="#cube" x="6" y="9" />
+  <use href="#cube" x="10" y="9" />
+  <use href="#cube" x="14" y="9" />
+</svg>
+`}
+/>
+
+## Dynamic drawing
+
+Copy-pasting the same line multiple times isn't fun. But drawing it with some code is! Let's switch to React, and render the pattern using a loop.
+
+If we look at the `x` and `y` attributes for all our cubes, we can easily infer a generic formula. If we take `i` and `j` being the indices of a single cube, we get the cube's position with:
+
+`y = 3 * j`
+
+`x = 4 * i` if `j` is even, `x = 4 * i + 2` otherwise
+
+export const before = `
+const width = 16;
+const height = 12;
+
+const Background = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="2 0 48 36" width="100%">
+    <Defs />
+
+    {Array(width * height)
+      .fill(null)
+      .map((_, index) => {
+`;
+
+export const after = `
+      })}
+  </svg>
+);
+
+const Defs = () => (
+  <defs>
+    <path id="face1" d="M 0 0 L 2 -1 L 4 0 L 2 1 Z" />
+    <path id="face2" d="M 0 0 L 2 1 L 2 3 L 0 2 Z" />
+    <path id="face3" d="M 4 0 L 2 1 L 2 3 L 4 2 Z" />
+
+    <g id="cube">
+      <use href="#face1" fill="#0006" />
+      <use href="#face2" fill="#0003" />
+      <use href="#face3" fill="#0009" />
+    </g>
+  </defs>
+)
+`
+
+<ReactPreview
+  component="Background"
+  height={400}
+  code={`
+    ${before}
+    const i = Math.floor(index / height);
+    const j = index % height;
+
+    const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+    const y = 3 * j;
+
+    return <use key={index} href="#cube" x={x} y={y} />;
+    ${after}
+  `}
+/>
+
+> Note that I change the viewBox to render the images output correctly, but we'll get to this later.
+
+We'll filter out some of the cubes, to make the pattern a bit more interesting. We want to have lots of cubes in the bottom of the image, and less and less cubes as we go up. We'll use the `j` index to compute a probability: if `Math.random() > j / height`, we'll skip this cube.
+
+<ReactPreview
+  component="Background"
+  height={400}
+  before={before}
+  code={`
+    const i = Math.floor(index / height);
+    const j = index % height;
+
+    if (Math.random() > j / height) {
+      return null;
+    }
+
+    const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+    const y = 3 * j;
+
+    return <use key={index} href="#cube" x={x} y={y} />;
+  `}
+  after={after}
+/>
+
+## Animations
+
+Time to make things move, using the [animate element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate) (which I learned about while making this as well). It's usage is fairly simple, we just need to render an `<animate attributeName="..." values="..." />` as a child of a node, the `attributeName` will refer to an attribute of it's parent, and the `values` will containg the different "keyframes" of the parent's attribute, separated with semicolons.
+
+The animation itself will be about updating the `y` attribute and the `opacity` of all our cubes, but with a slight delay depending on the cube's position, creating that "wave" effect.
+
+Let's animate all cubes the same way first, and we'll figure out the delay thing after that.
+
+<ReactPreview
+  component="Background"
+  height={400}
+  before={`
+    ${before}
+    const i = Math.floor(index / height);
+    const j = index % height;
+
+    if (Math.random() > j / height) {
+      return null;
+    }
+
+    const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+    const y = 3 * j;
+  `}
+  code={`
+    const anim = {
+      dur: '1600ms',
+      begin: '0',
+      calcMode: 'spline',
+      keySplines: '0.5 0 0.5 1 ; 0.5 0 0.5 1',
+      repeatCount: 'indefinite',
+    };
+
+    return (
+      <use key={index} href="#cube" x={x} y={y}>
+        <animate id={String(index)} attributeName="y" values={[y, y - 1, y].join(';')} {...anim} />
+        <animate attributeName="opacity" values="1 ; 0.7 ; 1" {...anim} />
+      </use>
+    );
+  `}
+  after={after}
+/>
+
+> The `calcMode` and `keySplines` attributes make the animation smoother (the points describe an ease-in-out Bézier curve).
+
+The wave effect is done by starting the animation depending on the `i` and `j` indices of the cubes, which can be done using the [`begin`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/begin) prop of the `animate` element with a "syncbase" value. This will allow repeating the animation indefinitely, but with a pause between each repetition.
+
+This require to put an id on one of our animations. The index of the loop will do just fine.
+
+If we want the animation to start after 120ms, and to repeat every 2 seconds, the begin attribute should look like `begin="120ms ; id.end+2s"`.
+
+<ReactPreview
+  component="Background"
+  height={400}
+  before={`
+    ${before}
+    const i = Math.floor(index / height);
+    const j = index % height;
+
+    if (Math.random() > j / height) {
+      return null;
+    }
+
+    const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+    const y = 3 * j;
+  `}
+  code={`
+    const anim = {
+      dur: '1600ms',
+      begin: \`\${i / 30 + j / 20} ; \${index}.end+2s\`,
+      calcMode: 'spline',
+      keySplines: '0.5 0 0.5 1 ; 0.5 0 0.5 1',
+    };
+
+    return (
+      <use key={index} href="#cube" x={x} y={y}>
+        <animate id={String(index)} attributeName="y" values={[y, y - 1, y].join(';')} {...anim} />
+        <animate attributeName="opacity" values="1 ; 0.7 ; 1" {...anim} />
+      </use>
+    );
+  `}
+  after={after}
+/>
+
+## Polish
+
+We're nearly done! Just need to adjust a few things, like the [`viewBox`](https://developer.mozilla.org/fr/docs/Web/SVG/Attribute/viewBox) prop that we talked about earlier. As our image can render a dynamic number of cubes, it's `viewBox` should be computed. This attribute is kind of like the viewport of the image, and in our case, it should start from `x = 2` in order to hide the first row of the pattern, which is incomplete.
+
+```tsx
+viewBox={`2 0 ${4 * width - 2} ${3 * height - 2}`}
+```
+
+Lastly, as this image will be used as a background for this website's header, we'll want to make some room in the center, in order to bring out the main title. At first, I thought about removing the cubes in the center of the image using the circle equation, but it was looking weird. Then I looked up for the ellipse equation, but I don't have the level in math to use it. So I ended up tweaking the equation I know, to make a flat ~earth~ circle. Here is what it does (bypassing the filtering and the animation).
+
+<ReactPreview
+  component="Background"
+  height={400}
+  before={`
+    ${before}
+    const i = Math.floor(index / height);
+    const j = index % height;
+
+    const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+    const y = 3 * j;
+  `}
+  code={`
+    const ci = width / 2;
+    const cj = height / 2;
+
+    if ((i - ci + 2) ** 2 + (j - cj) ** 4 < 20) {
+      return null;
+    }
+  `}
+  after={`
+    return <use key={index} href="#cube" x={x} y={y} />;
+    ${after}
+  `}
+/>
+
+And here it is! The final code goes like this. Hope you enjoyed following this post! Cheers 😁
+
+
+<ReactPreview
+  component="Background"
+  props={{ width: 24, height: 24 }}
+  height={400}
+  code={`
+type BackgroundProps = {
+  width: number
+  height: number
+}
+
+const Background = ({ width, height }: BackgroundProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox={\`2 0 \${4 * width - 2} \${3 * height - 2}\`} width="100%">
+    <Defs />
+
+    {Array(width * height)
+      .fill(null)
+      .map((_, index) => {
+        const i = Math.floor(index / height);
+        const j = index % height;
+
+        const ci = width / 2;
+        const cj = height / 2;
+
+        if (Math.random() > j / height) {
+          return null;
+        }
+
+        if ((i - ci) ** 2 / (height / 3) ** 2 + (j - cj) ** 2 / (height / 4) ** 2 < 1) {
+          return null;
+        }
+
+        const x = 4 * i + (j % 2 === 0 ? 0 : 2);
+        const y = 3 * j;
+
+        const anim: React.SVGProps<SVGAnimateElement> = {
+          dur: '1600ms',
+          begin: \`\${i / 30 + j / 20 + 3} ; \${index}.end+10s\`,
+          calcMode: 'spline',
+          keySplines: '0.5 0 0.5 1 ; 0.5 0 0.5 1',
+        };
+
+        return (
+          <use key={index} href="#cube" x={x} y={y}>
+            <animate id={String(index)} attributeName="y" values={[y, y - 0.5, y].join(';')} {...anim} />
+            <animate attributeName="opacity" values="1 ; 0.7 ; 1" {...anim} />
+          </use>
+        );
+      })}
+  </svg>
+);
+
+const Defs = () => (
+  <defs>
+    <path id="face1" d="M 0 0 L 2 -1 L 4 0 L 2 1 Z" />
+    <path id="face2" d="M 0 0 L 2 1 L 2 3 L 0 2 Z" />
+    <path id="face3" d="M 4 0 L 2 1 L 2 3 L 4 2 Z" />
+
+    <g id="cube">
+      <use href="#face1" fill="#0006" />
+      <use href="#face2" fill="#0003" />
+      <use href="#face3" fill="#0009" />
+    </g>
+  </defs>
+)
+  `}
+/>

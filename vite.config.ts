@@ -1,5 +1,3 @@
-/// <reference types="vite-plugin-svgr/client" />
-
 import react from '@vitejs/plugin-react';
 import { visualizer } from 'rollup-plugin-visualizer';
 import { UserConfig } from 'vite';

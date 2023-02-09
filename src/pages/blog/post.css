@@ -1,0 +1,26 @@
+.post {
+  h1 {
+    @apply text-2xl mt-6 mb-4;
+  }
+
+  h2 {
+    @apply text-xl mt-5 mb-3;
+  }
+
+  h3 {
+    @apply text-lg mt-4 mb-2;
+  }
+
+  code {
+    @apply bg-muted px-1 rounded-xs whitespace-nowrap;
+    font-size: 0.85em;
+  }
+
+  pre code {
+    @apply py-2 bg-transparent;
+  }
+
+  blockquote {
+    @apply text-sm text-muted border-l-4 pl-2;
+  }
+}

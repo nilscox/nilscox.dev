@@ -1,33 +1,53 @@
-import { lazy, Suspense } from 'react';
-import { NotionRenderer } from 'react-notion-x';
+import { EvaluateOptions, evaluateSync } from '@mdx-js/mdx';
+import React, { ComponentType, useEffect, useMemo, useState } from 'react';
+import * as jsxRuntime from 'react/jsx-runtime';
 
-import { Theme, useThemeMode } from '../../hooks/use-theme-mode';
+import './post.css';
 
-import 'prismjs/themes/prism-tomorrow.css';
-import 'react-notion-x/src/styles.css';
+type BlogPageProps = {
+  postId: string;
+  post: string;
+};
 
-import './notion.css';
+export const Page = ({ post }: BlogPageProps) => {
+  const Post = useMemo(() => evaluate(post), [post]);
 
-// prettier-ignore
-const components = {
-  Code: lazy(() => import('react-notion-x/build/third-party/code').then(({ Code }) => ({ default: Code }))),
-  Collection: lazy(() => import('react-notion-x/build/third-party/collection').then(({ Collection }) => ({ default: Collection }))),
-}
+  const [HtmlPreview, setHtmlPreview] = useState<ComponentType<any>>(() => LoadingHtml);
+  const [ReactPreview, setReactPreview] = useState<ComponentType<any>>(() => LoadingCode);
 
-type BlogPostPageProps = Pick<React.ComponentProps<typeof NotionRenderer>, 'recordMap'>;
-
-export const Page = ({ recordMap }: BlogPostPageProps) => {
-  const theme = useThemeMode();
+  useEffect(() => {
+    setHtmlPreview(() => React.lazy(() => import('../../components/html-preview')));
+    setReactPreview(() => React.lazy(() => import('../../components/react-preview')));
+  }, []);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <NotionRenderer
-        components={components}
-        recordMap={recordMap}
-        disableHeader
-        fullPage
-        darkMode={theme === Theme.dark}
-      />
-    </Suspense>
+    <main className="post mx-auto max-w-page">
+      <React.Suspense fallback={<Loading />}>
+        <Post components={{ HtmlPreview, ReactPreview }} />
+      </React.Suspense>
+    </main>
   );
+};
+
+const LoadingHtml = ({ html }: { html: string }) => {
+  return <LoadingCode code={html} />;
+};
+
+const LoadingCode = ({ code }: { code: string }) => (
+  <pre className="relative rounded-sm bg-muted/50 p-2 text-sm">
+    {code.trim()}
+    <div className="absolute inset-0 animate-pulse bg-neutral/50" />
+    <div className="absolute inset-0 flex items-center justify-center text-base">Loading preview...</div>
+  </pre>
+);
+
+const Loading = () => {
+  return <>Loading...</>;
+};
+
+const evaluate = (mdx: string) => {
+  return evaluateSync(mdx, {
+    ...jsxRuntime,
+    jsxDEV: jsxRuntime.jsx,
+  } as EvaluateOptions).default;
 };
