@@ -1,18 +1,21 @@
+import assert from 'assert';
 import fs from 'fs/promises';
 import path from 'path';
-import { fileURLToPath } from 'url';
+
 import matter from 'gray-matter';
 
 import { Post } from './post';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 export class FileSystemPostRepository {
-  static readonly postsDir = path.join(__dirname, 'posts');
+  static readonly postsDir = process.env.POSTS_DIR as string;
+
+  constructor() {
+    assert(typeof FileSystemPostRepository.postsDir === 'string');
+  }
 
   async listPosts(): Promise<Post[]> {
     const files = await this.listEntries();
-    const entries = await Promise.all(files.map(this.loadEntry));
+    const entries = await Promise.all(files.map(this.loadEntry.bind(this)));
 
     return entries.map(([entry, data]) => this.parsePost(entry, data));
   }
@@ -44,10 +47,15 @@ export class FileSystemPostRepository {
   private parsePost(entry: string, data: string): Post {
     const { data: meta, content } = matter(data);
 
+    assert(typeof meta.title === 'string');
+    assert(meta.date instanceof Date);
+    assert(typeof meta.description === 'string');
+    assert(typeof meta.cover === 'string');
+
     return {
       link: `/blog/${entry.replace(/^\d+-\d+-\d+-/, '')}`,
       title: meta.title,
-      date: new Date(meta.date),
+      date: meta.date,
       cover: meta.cover,
       description: meta.description,
       content,

@@ -2,12 +2,15 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import compression from 'compression';
+import dotenv from 'dotenv';
 import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { renderPage } from 'vite-plugin-ssr';
 
 import { Background } from './pages/index/background';
+
+dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
