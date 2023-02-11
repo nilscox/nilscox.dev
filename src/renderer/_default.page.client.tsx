@@ -6,6 +6,8 @@ import { Layout } from '../layout';
 import { PageContextProvider } from './page-context';
 import type { PageContextClient } from './types';
 
+import '../monaco';
+
 export const clientRouting = true;
 export const hydrationCanBeAborted = true;
 

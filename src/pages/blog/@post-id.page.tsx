@@ -5,8 +5,9 @@ import rehypeHighlight from 'rehype-highlight';
 
 import { Code } from '../../components/code';
 import { Theme, useThemeMode } from '../../hooks/use-theme-mode';
-import { rehypeCodeMeta } from './unst-plugins/rehype-code-meta';
+
 import { Post } from './post';
+import { rehypeCodeMeta } from './unst-plugins/rehype-code-meta';
 
 import './post.css';
 

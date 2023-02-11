@@ -5,9 +5,6 @@ import ssr from 'vite-plugin-ssr/plugin';
 import svgr from 'vite-plugin-svgr';
 
 const config: UserConfig = {
-  ssr: {
-    noExternal: ['react-notion-x'],
-  },
   server: {
     port: 8000,
   },

@@ -10,6 +10,9 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "@code-preview/compiler": "^0.1.0",
+    "@code-preview/formatter": "^0.1.0",
+    "@code-preview/react": "^0.1.0",
     "@fontsource/source-sans-3": "^4.5.13",
     "@heroicons/react": "^2.0.14",
     "@mdx-js/mdx": "^2.2.1",
@@ -28,6 +31,7 @@
     "compression": "^1.7.4",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
+    "esbuild": "^0.17.7",
     "esbuild-wasm": "^0.17.5",
     "eslint": "^8.32.0",
     "eslint-import-resolver-typescript": "^3.5.3",
