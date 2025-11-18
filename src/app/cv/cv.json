@@ -1,0 +1,175 @@
+{
+  "firstName": "Nils",
+  "lastName": "Layet",
+
+  "jobTitle": "/* Tech Lead | Product Engineer */",
+
+  "headline": "Via mes expériences en startups et scale-up, j'ai acquis une connaissance approfondie des technologies clés du web (TypeScript, NodeJS, React), ansi qu'une maitrise des méthodologies permettant la conception de produits de qualité et l'accompagnement de développeurs juniors.\n\nJe suis à l'écoute d'opportunités en tant que tech lead / staff engineer, en full remote, pour accélérer le succès d'un produit à fort impact social.",
+
+  "contact": {
+    "location": "Cavaillon, France",
+    "website": "https://nilscox.dev",
+    "social": {
+      "LinkedIn": {
+        "label": "linkedin.com/in/nilscox",
+        "link": "https://www.linkedin.com/in/nilscox/?locale=fr_FR"
+      },
+      "GitHub": {
+        "label": "github.com/nilscox",
+        "link": "https://github.com/nilscox"
+      },
+      "Twitter": {
+        "label": "twitter.com/NilsCox",
+        "link": "https://twitter.com/NilsCox"
+      }
+    }
+  },
+
+  "languages": {
+    "🇫🇷 Français": "natif",
+    "🇺🇲 Anglais": "professionnel"
+  },
+
+  "skills": {
+    "TypeScript": "+++",
+    "React": "+++",
+    "Tailwind": "++",
+    "Node.js": "++",
+    "NestJS": "++",
+    "Vite(est)": "++",
+    "Next.JS": "++",
+    "Web APIs": "++",
+    "HTML": "++",
+    "CSS": "++",
+    "SVG": "++",
+    "CI": "++",
+    "Docker": "++",
+    "Shell": "++",
+    "SQL": "++",
+    "C#": "+",
+    "Python": "+"
+  },
+
+  "about": [
+    "🧠 Je suis passionné par l'esprit critique et la zététique",
+    "🎵 Je produis de la musique électro",
+    "😻 J'ai deux chats trop mignons",
+    "👋 Je suis à l'aise avec le tutoiement"
+  ],
+
+  "experience": [
+    {
+      "name": "Responsable Développement Frontend",
+      "from": "2022-05",
+      "company": { "name": "Koyeb", "link": "https://koyeb.com" },
+      "description": [
+        "Conception et développement du panneau de contrôle ([app.koyeb.com](https://app.koyeb.com)) et du site marketing ([koyeb.com](https://www.koyeb.com)).",
+        "Mise en place de **tests unitaires et end-to-end**, pipelines **CI/CD** et bonnes pratiques de maintenabilité du code.",
+        "Refonte du frontend en 5 mois : intégration d'un **design system**, nouvelle navigation. Excellents retours utilisateurs, amélioration significative de la productivité.",
+        "Code open source : [github.com/koyeb/control-panel](https://github.com/koyeb/control-panel)."
+      ],
+      "technologies": ["TypeScript", "React", "Tailwind", "NextJS", "NodeJS", "Playwright", "GitHub", "Koyeb"]
+    },
+    {
+      "name": "Développeur Full-Stack",
+      "from": "2019-02",
+      "to": "2022-04",
+      "company": { "name": "Gojob", "link": "https://gojob.com" },
+      "description": [
+        "Conception et développement de fonctionnalités clés sur la plateforme d'intérim digitale, backend et frontend.",
+        "Mise en place d'un **moteur de facturation** et d'un **LMS interne** pour la formation des intérimaires.",
+        "Travail en squad (PM, designer, 4-5 devs), avec un mindset orienté produit.",
+        "Pilotage d'un groupe de travail sur les **sujets frontend** : architecture, structuration en micro-frontends, arbitrage de choix techniques.",
+        "Adoption et promotion des bonnes pratiques : **TDD**, **clean architecture**, sensibilisation aux enjeux **DevOps**."
+      ],
+      "technologies": ["TypeScript", "NodeJS", "NestJS", "React", "Redux", "NextJS", "GCP", "PostgreSQL"]
+    },
+    {
+      "name": "Développeur Full-Stack",
+      "from": "2017-03",
+      "to": "2018-08",
+      "company": { "name": "Sparted", "link": "https://www.sparted.com" },
+      "description": [
+        "Développement et maintenance de la **solution B2B d'e-learning**.",
+        "Initiative d'introduire les **tests automatisés**, adoptée par l'équipe.",
+        "Première expérience sur un projet d'envergure, apprentissage des **pratiques agiles** et du travail en équipe."
+      ],
+      "technologies": ["NodeJS", "Loopback", "Mithril", "AWS"]
+    }
+  ],
+
+  "education": [
+    {
+      "name": "Formation react.gg",
+      "company": {
+        "name": "ui.dev",
+        "link": "https://ui.dev"
+      },
+      "date": "2025",
+      "description": [
+        "Perfectionnement sur **React moderne**, maitrise approfondie du framework, de sa philosophie et de son écosystème."
+      ]
+    },
+    {
+      "name": "Formation TDD et Clean Archi",
+      "company": {
+        "name": "Wealcome",
+        "link": "https://wealcomecompany.com/wealcome-react-typescript-tdd-clean-architecture-formation"
+      },
+      "date": "2021",
+      "description": [
+        "Approfondissement des **bonnes pratiques** de conception logicielle : refactoring, design modulaire, diminution de la complexité accidentelle."
+      ]
+    },
+    {
+      "name": "Diplôme d'ingénieur en informatique",
+      "from": "2012",
+      "to": "2017",
+      "company": { "name": "EPITA", "link": "https://www.epita.fr" },
+      "description": [
+        "Cursus ingénieur, spécialité Multimédia et Technologies de l'Information (développement web et mobile, UI/UX, systèmes d'information)."
+      ]
+    },
+    {
+      "name": "Baccalauréat scientifique",
+      "from": "2009",
+      "to": "2012",
+      "company": { "name": "Lycée J. Siegfried", "link": "https://siegfried.lycee.ac-normandie.fr" }
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "Système d'Échange Local",
+      "from": "2024-01",
+      "link": "https://github.com/bopzor/sel",
+      "description": [
+        "Développement de la [**plateforme de gestion** du SEL](https://github.com/bopzor/sel) de ma commune, projet à fort impact social.",
+        "Contribution bénévole alliant valeur pour la communauté et **exploration technique** (architecture, bonnes pratiques, outils modernes)."
+      ],
+      "technologies": ["SolidJS", "Tailwind", "NodeJS", "Express"]
+    },
+    {
+      "name": "Shakala",
+      "from": "2019",
+      "to": "2023",
+      "link": "https://github.com/nilscox/shakala",
+      "description": [
+        "Conception et développement d'une **plateforme de discussion** favorisant des échanges constructifs et argumentés.",
+        "Projet personnel permettant d'expérimenter et de **mettre en pratique** mes connaissances acquises en faisant de la veille."
+      ],
+      "technologies": ["TypeScript", "React", "NestJS", "PostgreSQL"]
+    }
+  ],
+
+  "labels": {
+    "contact": "Contact",
+    "languages": "Langues",
+    "skills": "Compétences",
+    "about": "Autre",
+    "jobs": "Expériences",
+    "projects": "Projets",
+    "education": "Diplômes et formations",
+    "present": "Présent"
+  }
+}
