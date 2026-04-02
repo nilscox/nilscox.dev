@@ -26,7 +26,7 @@ export default function Page() {
       className={clsx(
         robotoMono.variable,
         'font-mono row max-w-6xl my-4 mx-auto bg-white rounded-lg shadow-2xl',
-        'print:max-w-none print:my-0 print:shadow-none',
+        'print:max-w-none print:my-0 print:shadow-none print:h-full',
       )}
     >
       <Aside />
@@ -50,7 +50,7 @@ function Aside() {
 
       <section className="col gap-4">
         <header>
-          <h2 className="text-xl text-amber-700 font-medium">{data.labels.contact}</h2>
+          <h2 className="text-lg text-amber-700 font-medium">{data.labels.contact}</h2>
         </header>
 
         <div className="col gap-2">
@@ -88,7 +88,7 @@ function Aside() {
 
       <section className="col gap-4">
         <header>
-          <h2 className="text-xl text-amber-700 font-medium">{data.labels.skills}</h2>
+          <h2 className="text-lg text-amber-700 font-medium">{data.labels.skills}</h2>
         </header>
 
         <ul className="row gap-x-4 gap-y-2 items-center flex-wrap">
@@ -109,12 +109,12 @@ function Aside() {
 
       <section className="col gap-4">
         <header>
-          <h2 className="text-xl text-amber-700 font-medium">{data.labels.languages}</h2>
+          <h2 className="text-lg text-amber-700 font-medium">{data.labels.languages}</h2>
         </header>
 
         <ul>
           {Object.entries(data.languages).map(([language, level]) => (
-            <li key={language}>
+            <li key={language} className="text-sm">
               {language} {level}
             </li>
           ))}
@@ -123,7 +123,7 @@ function Aside() {
 
       <section className="col gap-4">
         <header>
-          <h2 className="text-xl text-amber-700 font-medium">{data.labels.about}</h2>
+          <h2 className="text-lg text-amber-700 font-medium">{data.labels.about}</h2>
         </header>
 
         <div className="col gap-4">
@@ -149,7 +149,7 @@ function SocialLink({ icon, label, link }: { icon: string; label: string; link: 
 
 function Main() {
   return (
-    <main className="flex-1 p-4 col gap-4">
+    <main className="flex-1 p-4 col gap-6">
       <header className="items-center col gap-1 my-2">
         <h1 className="text-3xl">
           {data.firstName} {data.lastName}
@@ -158,7 +158,9 @@ function Main() {
       </header>
 
       <section className="mx-16">
-        <Markdown className="prose-p:mt-0 prose-p:mb-2 prose-p:last-of-type:mb-0">{data.headline}</Markdown>
+        <Markdown className="text-sm! prose-p:mt-0 prose-p:mb-2 prose-p:last-of-type:mb-0">
+          {data.headline}
+        </Markdown>
       </section>
 
       <Section label={data.labels.jobs} entries={data.experience} />
@@ -203,8 +205,8 @@ function SectionEntry({ entry }: { entry: Entry }) {
       <div className="col gap-1 flex-1">
         <EntryDates {...entry} />
 
-        <div className="row gap-3 items-center">
-          <h3 className="font-semibold text-lg">{entry.name}</h3>
+        <div className="row gap-3 my-1 items-center text-sm">
+          <h3 className="font-medium">{entry.name}</h3>
           {entry.company && '\u2022'}
           {entry.company && <Company {...entry.company} />}
         </div>
@@ -227,13 +229,13 @@ function Company({ link, name }: { link: string; name: string }) {
 
 function EntryDates({ date, from, to }: { date?: string; from?: string; to?: string }) {
   if (date) {
-    return <div className="text-xs row gap-2">{date}</div>;
+    return <div className="text-xs text-dim row gap-2">{date}</div>;
   }
 
   return (
-    <div className="text-xs row gap-2">
+    <div className="text-xs text-dim row gap-2">
       {from} - {to ?? data.labels.present}
-      {from && <span className="text-dim">({formatDistance(from, to)})</span>}
+      {from && <span>({formatDistance(from, to)})</span>}
     </div>
   );
 }
@@ -244,7 +246,7 @@ function EntryTechnologies({ technologies }: { technologies?: string[] }) {
   }
 
   return (
-    <div className="self-start mt-4 border-l pl-4 ml-4 min-w-32 text-sm">
+    <div className="self-start mt-4 border-l pl-4 ml-4 min-w-36 text-sm">
       <ul>
         {technologies.map((technology, index) => (
           <li key={index}>
@@ -306,7 +308,7 @@ function Markdown({ className, children }: { className?: string; children: strin
   return (
     <div
       className={clsx(
-        'prose max-w-none text-sm',
+        'prose max-w-none text-xs leading-relaxed',
         'prose-a:text-inherit',
         'prose-li:first-of-type:mt-0! prose-li:last-of-type:mb-0! prose-li:pl-0!',
         className,
