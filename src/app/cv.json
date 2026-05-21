@@ -2,11 +2,13 @@
   "firstName": "Nils",
   "lastName": "Layet",
 
-  "jobTitle": "/* Tech Lead | Product Engineer */",
+  "jobTitle": "/* Développeur web | Tech lead */",
 
-  "headline": "Via mes expériences en startups et scale-up, j'ai acquis une connaissance approfondie des technologies clés du web (TypeScript, NodeJS, React), ansi qu'une maitrise des méthodologies permettant la conception de produits de qualité et l'accompagnement de développeurs juniors.\n\nJe suis à l'écoute d'opportunités en tant que tech lead / staff engineer, en full remote, pour accélérer le succès d'un produit à fort impact social.",
+  "headline": "Via mes expériences en startups et scale-up, j'ai acquis une connaissance approfondie des technologies clés du web, ainsi qu'une maîtrise des méthodologies permettant la conception de produits de qualité et l'accompagnement de développeurs juniors.\n\nJe suis à l'écoute d'opportunités en tant que tech lead, 3 ou 4 jours par semaine en full remote, pour accélérer le succès d'un produit à fort impact social.",
 
   "contact": {
+    "email": "",
+    "tel": "",
     "location": "Cavaillon, France",
     "website": "https://nilscox.dev",
     "social": {
@@ -30,13 +32,15 @@
     "🇺🇲 Anglais": "professionnel"
   },
 
+  "domains": ["Sciences", "éducation", "santé", "enjeux environnementaux"],
+
   "skills": {
     "TypeScript": "+++",
     "React": "+++",
     "Tailwind": "++",
     "Node.js": "++",
     "NestJS": "++",
-    "Vite(est)": "++",
+    "Vite(st)": "++",
     "Next.JS": "++",
     "Web APIs": "++",
     "HTML": "++",
@@ -52,23 +56,25 @@
 
   "about": [
     "🧠 Je suis passionné par l'esprit critique et la zététique",
-    "🎵 Je produis de la musique électro",
+    "🎵 Je produis de la musique électro sur mon temps libre",
     "😻 J'ai deux chats trop mignons",
     "👋 Je suis à l'aise avec le tutoiement"
   ],
 
   "experience": [
     {
-      "name": "Responsable Développement Frontend",
+      "name": "Lead développeur Frontend",
       "from": "2022-05",
+      "to": "2026-04",
       "company": { "name": "Koyeb", "link": "https://koyeb.com" },
       "description": [
-        "Conception et développement du panneau de contrôle ([app.koyeb.com](https://app.koyeb.com)) et du site marketing ([koyeb.com](https://www.koyeb.com)).",
+        "Conception et développement du panneau de contrôle ([app.koyeb.com](https://app.koyeb.com)) de Koyeb, un fournisseur d'infrastructure cloud.",
+        "Refonte du frontend en 5 mois : intégration d'un **[design system](https://github.com/koyeb/design-system)** et d'une nouvelle navigation. Amélioration significative du temps de développement.",
         "Mise en place de **tests unitaires et end-to-end**, pipelines **CI/CD** et bonnes pratiques de maintenabilité du code.",
-        "Refonte du frontend en 5 mois : intégration d'un **design system**, nouvelle navigation. Excellents retours utilisateurs, amélioration significative de la productivité.",
-        "Code open source : [github.com/koyeb/control-panel](https://github.com/koyeb/control-panel)."
+        "Développement du site [koyeb.com](https://www.koyeb.com), du [serveur MCP](https://github.com/koyeb/mcp-server-koyeb) et d'un [SDK TypeScript](https://github.com/koyeb/koyeb-sandbox-sdk-js).",
+        "Code open-source : [github.com/koyeb/control-panel](https://github.com/koyeb/control-panel)."
       ],
-      "technologies": ["TypeScript", "React", "Tailwind", "NextJS", "NodeJS", "Playwright", "GitHub", "Koyeb"]
+      "technologies": ["TypeScript", "React", "Tailwind", "NextJS", "NodeJS", "GitHub", "Koyeb"]
     },
     {
       "name": "Développeur Full-Stack",
@@ -76,13 +82,14 @@
       "to": "2022-04",
       "company": { "name": "Gojob", "link": "https://gojob.com" },
       "description": [
-        "Conception et développement de fonctionnalités clés sur la plateforme d'intérim digitale, backend et frontend.",
+        "Conception et développement de fonctionnalités clés backend et frontend de Gojob, une plateforme d'intérim digitale.",
         "Mise en place d'un **moteur de facturation** et d'un **LMS interne** pour la formation des intérimaires.",
         "Travail en squad (PM, designer, 4-5 devs), avec un mindset orienté produit.",
         "Pilotage d'un groupe de travail sur les **sujets frontend** : architecture, structuration en micro-frontends, arbitrage de choix techniques.",
+        "**Encadrement** d'un développeur junior en stage de fin d'études.",
         "Adoption et promotion des bonnes pratiques : **TDD**, **clean architecture**, sensibilisation aux enjeux **DevOps**."
       ],
-      "technologies": ["TypeScript", "NodeJS", "NestJS", "React", "Redux", "NextJS", "GCP", "PostgreSQL"]
+      "technologies": ["TypeScript", "NodeJS", "NestJS", "React", "Redux", "NextJS", "PostgreSQL"]
     },
     {
       "name": "Développeur Full-Stack",
@@ -90,8 +97,8 @@
       "to": "2018-08",
       "company": { "name": "Sparted", "link": "https://www.sparted.com" },
       "description": [
-        "Développement et maintenance de la **solution B2B d'e-learning**.",
-        "Initiative d'introduire les **tests automatisés**, adoptée par l'équipe.",
+        "Développement et maintenance des produits de Sparted, une solution B2B d'e-learning.",
+        "Introduction de **tests automatisés**, initiative adoptée par l'équipe par la suite.",
         "Première expérience sur un projet d'envergure, apprentissage des **pratiques agiles** et du travail en équipe."
       ],
       "technologies": ["NodeJS", "Loopback", "Mithril", "AWS"]
@@ -103,7 +110,7 @@
       "name": "Formation react.gg",
       "company": {
         "name": "ui.dev",
-        "link": "https://ui.dev"
+        "link": "https://react.gg"
       },
       "date": "2025",
       "description": [
@@ -127,7 +134,7 @@
       "to": "2017",
       "company": { "name": "EPITA", "link": "https://www.epita.fr" },
       "description": [
-        "Cursus ingénieur, spécialité Multimédia et Technologies de l'Information (développement web et mobile, UI/UX, systèmes d'information)."
+        "Cursus ingénieur, spécialité Multimédia et Technologies de l'Information (systèmes d'information, développement web et mobile, UI/UX)."
       ]
     },
     {
@@ -144,10 +151,11 @@
       "from": "2024-01",
       "link": "https://github.com/bopzor/sel",
       "description": [
-        "Développement de la [**plateforme de gestion** du SEL](https://github.com/bopzor/sel) de ma commune, projet à fort impact social.",
-        "Contribution bénévole alliant valeur pour la communauté et **exploration technique** (architecture, bonnes pratiques, outils modernes)."
+        "Développement de la [**plateforme de gestion** du SEL](https://www.selonsnous.fr) de ma commune, projet à fort impact social.",
+        "Contribution bénévole alliant valeur pour la communauté et **exploration technique** (architecture, bonnes pratiques, outils modernes).",
+        "Code open-source : [github.com/bopzor/sel](https://github.com/bopzor/sel)"
       ],
-      "technologies": ["SolidJS", "Tailwind", "NodeJS", "Express"]
+      "technologies": ["TypeScript", "SolidJS", "Tailwind", "NodeJS", "Express"]
     },
     {
       "name": "Shakala",
@@ -166,6 +174,7 @@
     "contact": "Contact",
     "languages": "Langues",
     "skills": "Compétences",
+    "domains": "Domaines d'intérêts",
     "about": "Autre",
     "jobs": "Expériences",
     "projects": "Projets",
