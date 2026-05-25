@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "generate-pdf": "concurrently -k -s first \"pnpx serve -Ln -p 8080 dist\" \"sleep 1 && chromium  --headless --print-to-pdf=dist/nils-layet-cv.pdf http://localhost:8080\"",
+    "generate-pdf": "concurrently -k -s first \"pnpx serve -Ln -p 8080 dist\" \"sleep 2 && chromium  --headless --print-to-pdf=dist/nils-layet-cv.pdf http://localhost:8080\"",
     "start": "next start",
     "lint": "eslint"
   },
