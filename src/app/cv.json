@@ -32,8 +32,6 @@
     "🇺🇲 Anglais": "professionnel"
   },
 
-  "domains": ["Sciences", "éducation", "santé", "enjeux environnementaux"],
-
   "skills": {
     "TypeScript": "+++",
     "React": "+++",
@@ -41,6 +39,7 @@
     "Node.js": "++",
     "NestJS": "++",
     "Vite(st)": "++",
+    "TanStack": "++",
     "Next.JS": "++",
     "Web APIs": "++",
     "HTML": "++",
@@ -53,6 +52,8 @@
     "C#": "+",
     "Python": "+"
   },
+
+  "domains": ["Sciences", "éducation", "santé", "enjeux environnementaux", "AI safety"],
 
   "about": [
     "🧠 Je suis passionné par l'esprit critique et la zététique",
