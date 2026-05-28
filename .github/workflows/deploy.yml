@@ -1,17 +1,26 @@
+on:
+  - push
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+        with:
+          cache: true
+          run_install: |
+            - args: [--frozen-lockfile, --strict-peer-dependencies]
+
       - name: Build static files
-        id: build
-        run: |
-          pnpm install --frozen-lockfile
-          pnpm run build
-          pnpm run generate-pdf
+        run: pnpm run build
+
+      - name: Generate PDF
+        run: pnpx concurrently -k -s first "pnpx serve -Ln -p 8080 dist" "sleep 1 && chromium --headless --no-sandbox --run-all-compositor-stages-before-draw --virtual-time-budget=10000 --print-to-pdf=./dist/nils-layet-cv.pdf http://localhost:8080"
 
       - name: Upload static files
-        id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
